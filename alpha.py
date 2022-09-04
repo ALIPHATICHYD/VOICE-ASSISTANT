@@ -40,3 +40,16 @@ def transform():
 
 
 # In[3]:
+transform()
+
+
+# In[4]:
+
+
+def speaking(message):
+    engine = pyttsx3.init()
+    engine.say(message)
+    engine.runAndWait()
+
+
+# In[17]:
