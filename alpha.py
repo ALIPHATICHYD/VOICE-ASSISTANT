@@ -74,3 +74,30 @@ engine.setProperty('voice',id)
 engine.say('Hello World')
 engine.runAndWait()
 
+# In[24]:
+
+
+# returns the weekday name
+def query_day():
+    day = datetime.date.today()
+    #print(day)
+    weekday = day.weekday()
+    #print(weekday)
+    mapping = {
+        0:'Sunday',1:'Monday',2:'Tuesday',3:'Wednesday',4:'Thursday',5:'Friday',6:'Saturday'
+    }
+    try:
+        speaking(f'Today is {mapping[weekday]}')
+    except:
+        pass
+
+
+# In[49]:
+
+
+query_day()
+
+
+# In[72]:
+
+
