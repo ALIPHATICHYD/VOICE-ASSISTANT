@@ -40,8 +40,8 @@ def transform():
 
 
 # In[3]:
-transform()
 
+transform()
 
 # In[4]:
 
@@ -53,3 +53,24 @@ def speaking(message):
 
 
 # In[17]:
+
+
+speaking('hello world')
+# speaking('Hello world')
+
+
+# In[9]:
+
+
+engine = pyttsx3.init()
+for voice in engine.getProperty('voices'):
+    print(voice)
+
+    
+# In[45]:
+
+id ='HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_EN-US_ZIRA_11.0'
+engine.setProperty('voice',id)
+engine.say('Hello World')
+engine.runAndWait()
+
