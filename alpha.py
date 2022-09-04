@@ -100,4 +100,30 @@ query_day()
 
 # In[72]:
 
+#returns the time
+def query_time():
+    time = datetime.datetime.now().strftime("%I:%M:%S")
+    speaking(f"{time[0:2]} o'clock and {time[3:5]} minutes")
 
+
+# In[73]:
+
+
+query_time()
+
+
+# In[48]:
+
+
+#Intro greeting at startup
+def whatsup():
+    speaking('''Hi, I am ALPHA.
+    How may I help you?
+    ''')
+    # You know🌚
+
+
+# In[46]:
+
+
+whatsup()
