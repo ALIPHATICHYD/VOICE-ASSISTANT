@@ -20,3 +20,23 @@ import wikipedia
 
 
 #listen to our microphone and return the audio as text using google
+def transform():
+    r = sr.Recognizer()
+    with sr.Microphone() as source:
+        r.pause_threshold = 0.8
+        said = r.listen(source)
+        try:
+            print('I am listening')
+            q = r.recognize_google(said, language="en")
+            return q
+        except sr.UnknownValueError:
+            print("Sorry I did not understand")
+            return "I am waiting"
+        except sr.RequestError:
+            print('Sorry the service is down')
+            return "I am waiting"
+        except:
+            return "I am waiting"
+
+
+# In[3]:
