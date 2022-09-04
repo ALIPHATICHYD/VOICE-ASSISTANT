@@ -210,3 +210,86 @@ def whatsup():
 
 
 whatsup()
+
+# In[66]:
+
+
+#the heart of our assistant. Takes queries and returns answers
+def querying():
+    whatsup()
+    start = True
+    while(start):
+        q = transform().lower()
+        
+        if 'start youtube' in q:
+            speaking('starting youtube. Just a second.')
+            webbrowser.open('https://www.youtube.com')
+            continue
+            
+        elif 'start webbrowser' in q:
+            speaking('opening browser')
+            webbrowser.open('https://www.google.com')
+            continue
+        
+        elif 'what day is it' in q:
+            query_day()
+            continue
+            
+        elif 'what time is it' in q:
+            query_time()
+            continue
+            
+        elif "shut down" in q:
+            speaking('ok I am shutting down')
+            break
+        
+        elif "from wikipedia" in q:
+            speaking('checking wikipedia')
+            q = q.replace("wikipedia","")
+            result = wikipedia.summary(q,sentences=2)
+            speaking('found on wikipedia')
+            speaking(result)
+            continue
+        
+        elif "your name" in q:
+            speaking('I am ALPHA. Your VA')
+            continue
+            
+        elif "search web" in q:
+            pywhatkit.search(q)
+            speaking('that is what I found')
+            continue
+            
+        elif "play" in q:
+            speaking(f'playing {q}')
+            pywhatkit.playonyt(q)
+            continue
+            
+        elif "joke" in q:
+            speaking(pyjokes.get_joke())
+            continue
+            
+        elif "stock price" in q:
+            search  = q.split("of")[-1].strip()
+            lookup = {'apple':'AAPL',
+                     'amazon':'AMZN',
+                     'google':"GOOGL"}
+            try:
+                stock = lookup[search]
+                stock = yf.Ticker(stock)
+                currentprice = stock.info["regularMarketPrice"]
+                speaking(f'found it, the price for {search} is {currentprice}')
+                continue
+            except:
+                speaking(f'sorry I have no data for {search}')
+                continue
+
+
+
+# In[69]:
+
+
+querying()
+
+
+# In[ ]:
